@@ -326,6 +326,42 @@ public class MainApp{
             e.printStackTrace();
         }
 	}
+	
+	public static void readData(String table, String query)
+	{
+		try
+		{
+			Connection c = null;
+			Statement stmt = null;
+			String sql="";
+			//Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+
+			sql="SELECT " + query + " FROM " + table + ";" ;
+			System.out.println("SQL: " + sql + "\n" + query + "\n");
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			int cnt=1;
+			while ( rs.next() ) {
+				String q = rs.getString(query);
+				System.out.println("For Column " + cnt + ": " + "Value " + q);
+				cnt++;
+			}
+			rs.close();
+
+			stmt.close();
+			c.commit();
+			c.close();
+		}
+		catch (Exception e)
+		{
+            e.printStackTrace();
+        }
+	
+	}
 	//	4. Main App Switch-Case Loop
 	public static void main(String[] args) throws SQLException, SQLWarning
 	{
@@ -363,7 +399,10 @@ public class MainApp{
 				case 2:
 				{
 					System.out.println("Read From Table");
-					//func(table,col_name, )
+					String Table=reader.next();
+					String Query=reader.next();
+					System.out.println(Table+Query);
+					readData(Table, Query);
 					//break;
 				}
 				break;

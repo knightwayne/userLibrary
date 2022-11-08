@@ -18,7 +18,8 @@ import java.sql.DriverManager;
 // import org.json.simple.JSONObject;
 // import org.json.simple.parser.JSONParser;
 
-public class initDB {
+public class initDB
+{
     public static void initDatabase()
 	{
 		Connection c;
