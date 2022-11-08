@@ -420,6 +420,41 @@ public class MainApp{
             e.printStackTrace();
         }
 	}
+	
+	public static void addUser(String NAME,String EMAIL,String PASSWORD,String ADDRESS)
+	{
+		try
+		{
+			Connection c = null;
+			Statement stmt = null;
+			String sql="";
+			//Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+
+			sql = "INSERT INTO USERINFO (NAME,EMAIL,PASSWORD,ADDRESS) "+
+				"VALUES ('" + 
+				NAME + "', '" +
+				EMAIL + "', '" +
+				PASSWORD + "', '" +
+				ADDRESS +										
+				"');";
+			System.out.println("SQL: " + sql);
+			stmt.executeUpdate(sql);
+
+			//readData("USERINFO", "ID");
+
+			stmt.close();
+			c.commit();
+			c.close();
+		}
+		catch (Exception e)
+		{
+            e.printStackTrace();
+        }
+	}
 	//	4. Main App Switch-Case Loop
 	public static void main(String[] args) throws SQLException, SQLWarning
 	{
@@ -490,6 +525,11 @@ public class MainApp{
 				case 5:
 				{
 					System.out.println("Add New User");
+					String NAME=reader.next();
+					String EMAIL=reader.next();
+					String PASSWORD=reader.next();
+					String ADDRESS=reader.next();
+					addUser(NAME, EMAIL, PASSWORD, ADDRESS);
 					//break;
 				}
 				break;
