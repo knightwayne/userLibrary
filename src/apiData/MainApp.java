@@ -362,6 +362,51 @@ public class MainApp{
         }
 	
 	}
+	
+	public static void updateData(String table, String queryValue, String lhs, String rhs)
+	{
+		try
+		{
+			Connection c = null;
+			Statement stmt = null;
+			String sql="";
+			//Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+
+			sql = "UPDATE " + table + " SET RATING = " + queryValue + " WHERE " + lhs + " = " + rhs + ";" ;
+			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
+			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
+			System.out.println("SQL: " + sql);
+			stmt.executeUpdate(sql);
+
+			// ResultSet rs = stmt.executeQuery(sql);
+			
+			// int cnt=1;
+			// while ( rs.next() ) {
+			// 	String q = rs.getString(query);
+			// 	System.out.println("For Column " + cnt + ": " + "Value " + q);
+			// 	cnt++;
+			// }
+			// rs.close();
+
+			stmt.close();
+			c.commit();
+			c.close();
+		}
+		catch (Exception e)
+		{
+            e.printStackTrace();
+        }
+	
+	}
+
+	public static void deleteData(String table, String query)
+	{
+
+	}
 	//	4. Main App Switch-Case Loop
 	public static void main(String[] args) throws SQLException, SQLWarning
 	{
@@ -409,6 +454,12 @@ public class MainApp{
 				case 3:
 				{
 					System.out.println("Update From Table");
+					String Table=reader.next();
+					String QueryValue=reader.next();
+					String LHS=reader.next();
+					String RHS=reader.next();
+					//System.out.println(Table+Query);
+					updateData(Table, QueryValue, LHS, RHS);
 					//break;
 				}
 				break;
