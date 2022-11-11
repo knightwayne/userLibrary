@@ -19,14 +19,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class MainApp{
-	
-	//Display All Tables
-	// sql = "UPDATE USERINFO set ADDRESS = 'CENTER' where ID=2;";
-	// 		stmt.executeUpdate(sql);
-			
-	// 		c.commit();
-	// 		showResult();
-
 	public static void displayTables()
 	{
 		Connection c = null;
@@ -231,7 +223,8 @@ public class MainApp{
 						String display_title=new_obj.get("display_title").toString().replaceAll("[^a-zA-Z0-9\\s+]", "");
 						String critic=new_obj.get("byline").toString().replaceAll("[^a-zA-Z0-9\\s+]", "");
 						String summary=new_obj.get("summary_short").toString().replaceAll("[^a-zA-Z0-9\\s+]", "");
-						String urlA=new_obj.get("link").toString();
+						JSONObject r = (JSONObject) new_obj.get("link");
+						String urlA=r.get("url").toString();
 						String date=new_obj.get("publication_date").toString();
 						String sql = "INSERT INTO MOVIEREVIEW (TITLE, CRITIC, SUMMARY, URL, DATE, RATING, USER_ID) "+
 							"VALUES ('" + 
