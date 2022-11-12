@@ -35,22 +35,22 @@ public class initDB
 			stmt = c.createStatement();
 			
 			sql = "CREATE TABLE USERINFO " +
-							"(ID INTEGER PRIMARY KEY	AUTOINCREMENT," +
-							" NAME	TEXT    NOT NULL, " + 
-							" EMAIL	TEXT     NOT NULL, " + 
-							" PASSWORD	TEXT	NOT NULL, " + 
-							" ADDRESS TEXT)"; 
+				"(ID INTEGER PRIMARY KEY	AUTOINCREMENT," +
+				" NAME	TEXT    NOT NULL, " + 
+				" EMAIL	TEXT     NOT NULL, " + 
+				" PASSWORD	TEXT	NOT NULL, " + 
+				" ADDRESS TEXT)"; 
 			stmt.executeUpdate(sql);
 			
 			sql = "CREATE TABLE ARTICLE " +  
-					"(ARTICLE_ID INTEGER PRIMARY KEY AUTOINCREMENT, "+  
-					"HEADLINE TEXT NOT NULL, "+
-					"ABSTRACT TEXT NOT NULL, "+
-					"URL TEXT NOT NULL, "+
-					"DATE TEXT NOT NULL, "+
-					"RATING INT DEFAULT 0 NOT NULL, "+ 
-					"USER_ID INTEGER, "+
-					"FOREIGN KEY (USER_ID) REFERENCES USERINFO(ID))";
+				"(ARTICLE_ID INTEGER PRIMARY KEY AUTOINCREMENT, "+  
+				"HEADLINE TEXT NOT NULL, "+
+				"ABSTRACT TEXT NOT NULL, "+
+				"URL TEXT NOT NULL, "+
+				"DATE TEXT NOT NULL, "+
+				"RATING INT DEFAULT 0 NOT NULL, "+ 
+				"USER_ID INTEGER, "+
+				"FOREIGN KEY (USER_ID) REFERENCES USERINFO(ID))";
 			stmt.executeUpdate(sql);
 				
 			sql = "CREATE TABLE MOVIEREVIEW " +  
@@ -91,15 +91,15 @@ public class initDB
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO ARTICLE (ARTICLE_ID, HEADLINE, ABSTRACT, URL, DATE, RATING, USER_ID) " +
-					"VALUES (1, 'xx', 'yy', 'zz', 'ww', 3, 2);";
+					"VALUES (1, 'artHead', 'artAbs', 'artURL', 'artDate', 3, 2);";
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO MOVIEREVIEW (TITLE, CRITIC, SUMMARY, URL, DATE, RATING, USER_ID) " +
-					"VALUES ('xx1', 'yy1', 'zz1', 'vv1', 'ww1', 7, 3 );"; 
+					"VALUES ('movTitle', 'movCri', 'movSumm', 'movURL', 'movDate', 7, 3 );"; 
 			stmt.executeUpdate(sql);
 			
 			sql = "INSERT INTO BOOKREVIEW (TITLE, CRITIC, SUMMARY, URL, DATE, RATING, USER_ID) " +
-					"VALUES ('xx2', 'yy2', 'zz2', 'vv2', 'ww2', 6, 1 );"; 
+					"VALUES ('bookTitle', 'bookCri', 'bookSumm', 'bookURL', 'bookDate', 6, 1 );"; 
 			stmt.executeUpdate(sql);
 			
 			c.commit();
