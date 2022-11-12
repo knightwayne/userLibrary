@@ -1,4 +1,4 @@
-package apiData;
+package apiData.objects;
 
 public class movie extends media {
     String movieTitle;

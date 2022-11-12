@@ -144,7 +144,8 @@ public class MainApp{
 	//	4. Main App Switch-Case Loop
 	public static void main(String[] args) throws SQLException, SQLWarning
 	{
-		//try{
+		try
+		{
 			initDB.initDatabase();
 			//fetchData();
 			
@@ -166,45 +167,49 @@ public class MainApp{
 				case 1:
 				{
 					System.out.println("Create a New Entry in Table. Enter UserId, TableAPI, Rating, Query");
-					int userId=reader.nextInt();
-					String Table=reader.next();
-					int rating=reader.nextInt();
-					String Query=reader.next();
-					System.out.println(userId+Table+rating+Query);
-					createData.createDataF(userId, Table, rating, Query);
-					//break;
+					createData.createDataFunc();
+					// int userId=reader.nextInt();
+					// String Table=reader.next();
+					// int rating=reader.nextInt();
+					// String Query=reader.next();
+					// System.out.println(userId+Table+rating+Query);
+					// createData.createDataF(userId, Table, rating, Query);
+					// //break;
 				}
 				break;
 				case 2:
 				{
 					System.out.println("Read From Table");
-					String Table=reader.next();
-					String Query=reader.next();
-					System.out.println(Table+Query);
-					readData.readDataF(Table, Query);
-					//break;
+					readData.readDataFunc();
+					// String Table=reader.next();
+					// String Query=reader.next();
+					// System.out.println(Table+Query);
+					// readData.readDataF(Table, Query);
+					// //break;
 				}
 				break;
 				case 3:
 				{
 					System.out.println("Update From Table");
-					String Table=reader.next();
-					String QueryValue=reader.next();
-					String LHS=reader.next();
-					String RHS=reader.next();
-					//System.out.println(Table+Query);
-					updateData.updateDataF(Table, QueryValue, LHS, RHS);
+					updateData.updateDataFunc();
+					// String Table=reader.next();
+					// String QueryValue=reader.next();
+					// String LHS=reader.next();
+					// String RHS=reader.next();
+					// //System.out.println(Table+Query);
+					// updateData.updateDataF(Table, QueryValue, LHS, RHS);
 					//break;
 				}
 				break;
 				case 4:
 				{
 					System.out.println("Delete From Table");
-					String Table=reader.next();
-					String LHS=reader.next();
-					String RHS=reader.next();
-					//System.out.println(Table+Query);
-					deleteData.deleteDataF(Table, LHS, RHS);
+					deleteData.deleteDataFunc();
+					// String Table=reader.next();
+					// String LHS=reader.next();
+					// String RHS=reader.next();
+					// //System.out.println(Table+Query);
+					// deleteData.deleteDataF(Table, LHS, RHS);
 					//break;
 				}
 				break;
@@ -244,19 +249,19 @@ public class MainApp{
 			}  
 			
 			return;
-		// }
-		// catch(Exception e)
-		// {
-		// 	System.out.println("Error");
-		// 	File f= new File("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db");           //file to be delete  
-		// 	if(f.delete())                      //returns Boolean value  
-		// 	{  
-		// 		System.out.println(f.getName() + " deleted");   //getting and printing the file name  
-		// 	}  
-		// 	else  
-		// 	{  
-		// 		System.out.println("failed");  
-		// 	}  
-		// }
+		}
+		catch(Exception e)
+		{
+			System.out.println("Error:" + e);
+			File f= new File("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db");           //file to be delete  
+			if(f.delete())                      //returns Boolean value  
+			{  
+				System.out.println(f.getName() + "- File Deleted");   //getting and printing the file name  
+			}  
+			else  
+			{  
+				System.out.println("Failed to Delete File");  
+			}  
+		}
 }
 }

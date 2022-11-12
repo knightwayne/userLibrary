@@ -1,4 +1,4 @@
-package apiData;
+package apiData.objects;
 
 public class book extends media {
     String bookTitle;
