@@ -165,6 +165,15 @@ public class userTdg {
 			stmt = c.createStatement();
 
 			sql = "DELETE FROM USERINFO WHERE " + lhs + " = '" + rhs + "';" ;
+			if(lhs.equals("ID"))
+			{
+				articleTdg a1=new articleTdg();
+				a1.delete("USER_ID",rhs);
+				movieTdg a2=new movieTdg();
+				a2.delete("USER_ID",rhs);
+				bookTdg a3=new bookTdg();
+				a3.delete("USER_ID",rhs);
+			}
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
 			System.out.println("SQL: " + sql);

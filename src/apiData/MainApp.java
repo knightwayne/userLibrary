@@ -23,8 +23,8 @@ import java.sql.SQLWarning;
 public class MainApp{
 	public static void main(String[] args) throws IOException, SQLException, SQLWarning
 	{
-		// try
-		// {
+		try
+		{
 			initDB.initDatabase();
 
 			int input = 0;
@@ -71,45 +71,46 @@ public class MainApp{
 				case 5:
 				{
 					System.out.println("Exit Programme");
+					break;
 				}
-				break;
+				//break;
 				default:
 					System.out.println("Incorrect Input. Please enter a Number between 0 to 6.");
 				}
 				
-			} while (!(input==6));
+			} while (!(input==5));
 			
 			reader.close();
 			System.out.println("Program Exiting");
 			
-		// 	//Deleting Local Database
-		// 	String localDir = System.getProperty("user.dir");
-		// 	System.out.println(localDir);
-		// 	File f= new File(localDir+"\\testDB.db");    
-		// 	if(f.delete())                    
-		// 	{  
-		// 		System.out.println(f.getName() + " deleted");
-		// 	}  
-		// 	else  
-		// 	{  
-		// 		System.out.println("failed");  
-		// 	}  
+			//Deleting Local Database
+			String localDir = System.getProperty("user.dir");
+			System.out.println(localDir);
+			File f= new File(localDir+"\\testDB.db");    
+			if(f.delete())                    
+			{  
+				System.out.println(f.getName() + " deleted");
+			}  
+			else  
+			{  
+				System.out.println("failed");  
+			}  
 			
-		// 	return;
-		// }
-		// catch(Exception e)
-		// {
-		// 	String localDir = System.getProperty("user.dir");
-		// 	System.out.println(localDir);
-		// 	File f= new File(localDir+"\\testDB.db");
-		// 	if(f.delete())
-		// 	{  
-		// 		System.out.println(f.getName() + "- File Deleted");
-		// 	}  
-		// 	else  
-		// 	{  
-		// 		System.out.println("Failed to Delete File");  
-		// 	}  
-		// }
+			return;
+		}
+		catch(Exception e)
+		{
+			String localDir = System.getProperty("user.dir");
+			System.out.println(localDir);
+			File f= new File(localDir+"\\testDB.db");
+			if(f.delete())
+			{  
+				System.out.println(f.getName() + "- File Deleted");
+			}  
+			else  
+			{  
+				System.out.println("Failed to Delete File");  
+			}  
+		}
 }
 }

@@ -202,7 +202,7 @@ public class bookTdg implements mediaInterface{
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 
-			sql = "DELETE FROM BOOK WHERE " + lhs + " = '" + rhs + "';" ;
+			sql = "DELETE FROM BOOKREVIEW WHERE " + lhs + " = '" + rhs + "';" ;
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
 			System.out.println("SQL: " + sql);

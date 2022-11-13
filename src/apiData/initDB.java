@@ -1,4 +1,5 @@
 package apiData;
+import apiData.tdg.*;
 //Libraries
 // import java.net.HttpURLConnection;
 // import java.net.URL;
@@ -103,7 +104,14 @@ public class initDB
 			stmt.executeUpdate(sql);
 			
 			c.commit();
-			//MainApp.displayTables();
+			articleTdg a1=new articleTdg();
+			a1.read("All");
+			movieTdg a2=new movieTdg();
+			a2.read("All");
+			bookTdg a3=new bookTdg();
+			a3.read("All");
+			userTdg a4=new userTdg();
+			a4.read("All"); 
 			
 			stmt.close();
 			c.close();
