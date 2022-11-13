@@ -16,7 +16,45 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 // import org.json.simple.parser.JSONParser;
 
-public class bookTdg {
+public class bookTdg implements mediaInterface{
+
+	public void displayTable()
+	{
+		Connection c = null;
+	    Statement stmt = null;
+		ResultSet rs=null;
+	     try
+	     {
+	        //Class.forName("org.sqlite.JDBC");
+	        c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+	        c.setAutoCommit(false);
+	        System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+	     
+        	rs = stmt.executeQuery( "SELECT * FROM " +  "BOOKREVIEW" + ";" );
+	        System.out.println("\nBook Review Table");
+			while ( rs.next() ) {
+		           
+				System.out.println( "BOOK_ID = " + rs.getInt("BOOK_ID") );
+				System.out.println( "TITLE = " + rs.getString("TITLE") );
+				System.out.println( "CRITIC = " + rs.getString("CRITIC") );
+				System.out.println( "SUMMARY = " + rs.getString("SUMMARY") );
+				System.out.println( "URL = " + rs.getString("URL") );
+				System.out.println( "Date = " + rs.getString("DATE") );
+				System.out.println( "Rating = " + rs.getInt("RATING") );
+				System.out.println( "UserId = " + rs.getInt("USER_ID") );
+		 	}
+	        rs.close();
+			stmt.close();
+	        c.close();
+	     }
+	     catch ( Exception e ) 
+	     {
+	        System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+	        System.exit(0);
+	     }
+	     System.out.println("Tables Read successfully");
+	}
 
     public void create(int userId, int rating, String query)
     {
@@ -69,7 +107,7 @@ public class bookTdg {
 			}
             else
             {
-                throw new RuntimeException("HttpResponseCode: " + recv.responseCode);
+                System.out.println("HttpResponseCode: " + recv.responseCode);
             }
             stmt.close();
 			c.commit();
@@ -96,6 +134,11 @@ public class bookTdg {
 
 			sql="SELECT " + query + " FROM BOOK;" ;
 			System.out.println("SQL: " + sql + "\n" + query + "\n");
+			if(query.equals("All"))
+			{
+				displayTable();
+				return;
+			}
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			int cnt=1;
@@ -159,7 +202,7 @@ public class bookTdg {
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 
-			sql = "DELETE FROM BOOK WHERE " + lhs + " = " + rhs + ";" ;
+			sql = "DELETE FROM BOOK WHERE " + lhs + " = '" + rhs + "';" ;
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
 			System.out.println("SQL: " + sql);

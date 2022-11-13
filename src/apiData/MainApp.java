@@ -5,12 +5,13 @@ import apiData.crudOperations.*;
 // import java.net.URL;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
+// import java.sql.Connection;
+// import java.sql.Statement;
+// import java.sql.DriverManager;
+// import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
 
@@ -20,152 +21,32 @@ import java.sql.SQLWarning;
 // import org.json.simple.parser.JSONParser;
 
 public class MainApp{
-	public static void displayTables()
+	public static void main(String[] args) throws IOException, SQLException, SQLWarning
 	{
-		Connection c = null;
-	    Statement stmt = null;
-		ResultSet rs=null;
-	     try
-	     {
-	        //Class.forName("org.sqlite.JDBC");
-	        c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
-	        c.setAutoCommit(false);
-	        System.out.println("Opened database successfully");
-			stmt = c.createStatement();
-	     
-        	rs = stmt.executeQuery( "SELECT * FROM " +  "USERINFO" + ";" );  
-        	System.out.println("UserInfo Table");
-	        while ( rs.next() ) {
-	           int id = rs.getInt("id");
-	           String name = rs.getString("name");
-	           String email= rs.getString("email");
-	           String password = rs.getString("password");
-	           String address = rs.getString("address");
-	           
-	           System.out.println( "ID = " + id );
-	           System.out.println( "NAME = " + name );
-	           System.out.println( "EMAIL = " + email );
-	           System.out.println( "PASSWORD = " + password );
-	           System.out.println( "ADDRESS = " + address );
-	           System.out.println();
-	        }
-	        rs.close();
-	        
-	        rs = stmt.executeQuery( "SELECT * FROM " +  "ARTICLE" + ";" );   
-	        System.out.println("\nArticle Table");
-	        while ( rs.next() ) {
-		           
-		           System.out.println( "ArticleId = " + rs.getInt("ARTICLE_ID") );
-		           System.out.println( "Headline = " + rs.getString("HEADLINE") );
-		           System.out.println( "Abstract = " + rs.getString("ABSTRACT") );
-				   System.out.println( "URL = " + rs.getString("URL") );
-		           System.out.println( "Date = " + rs.getString("DATE") );
-		           System.out.println( "Rating = " + rs.getInt("RATING") );
-				   System.out.println( "UserId = " + rs.getInt("USER_ID") );
-	        }
-	        rs.close();
-	        
-	        rs = stmt.executeQuery( "SELECT * FROM " +  "MOVIEREVIEW" + ";" );  
-	        System.out.println("\nMovie Review Table");
-	        while ( rs.next() ) {
-		           
-				System.out.println( "MovieId = " + rs.getInt("MOVIE_ID") );
-				System.out.println( "TITLE = " + rs.getString("TITLE") );
-				System.out.println( "CRITIC = " + rs.getString("CRITIC") );
-				System.out.println( "SUMMARY = " + rs.getString("SUMMARY") );
-				System.out.println( "URL = " + rs.getString("URL") );
-				System.out.println( "Date = " + rs.getString("DATE") );
-				System.out.println( "Rating = " + rs.getInt("RATING") );
-				System.out.println( "UserId = " + rs.getInt("USER_ID") );
-		 	}
-	        rs.close();
-	        
-	        rs = stmt.executeQuery( "SELECT * FROM " +  "BOOKREVIEW" + ";" );
-	        System.out.println("\nBook Review Table");
-			while ( rs.next() ) {
-		           
-				System.out.println( "BOOK_ID = " + rs.getInt("BOOK_ID") );
-				System.out.println( "TITLE = " + rs.getString("TITLE") );
-				System.out.println( "CRITIC = " + rs.getString("CRITIC") );
-				System.out.println( "SUMMARY = " + rs.getString("SUMMARY") );
-				System.out.println( "URL = " + rs.getString("URL") );
-				System.out.println( "Date = " + rs.getString("DATE") );
-				System.out.println( "Rating = " + rs.getInt("RATING") );
-				System.out.println( "UserId = " + rs.getInt("USER_ID") );
-		 	}
-	        rs.close();
-        
-	        stmt.close();
-	        c.close();
-	     }
-	     catch ( Exception e ) 
-	     {
-	        System.err.println( e.getClass().getName() + ": " + e.getMessage() );
-	        System.exit(0);
-	     }
-	     System.out.println("Tables Read successfully");
-
-	}
-	
-	public static void addUser(String NAME,String EMAIL,String PASSWORD,String ADDRESS)
-	{
-		try
-		{
-			Connection c = null;
-			Statement stmt = null;
-			String sql="";
-			//Class.forName("org.sqlite.JDBC");
-			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
-			c.setAutoCommit(false);
-			System.out.println("Opened database successfully");
-			stmt = c.createStatement();
-
-			sql = "INSERT INTO USERINFO (NAME,EMAIL,PASSWORD,ADDRESS) "+
-				"VALUES ('" + 
-				NAME + "', '" +
-				EMAIL + "', '" +
-				PASSWORD + "', '" +
-				ADDRESS +										
-				"');";
-			System.out.println("SQL: " + sql);
-			stmt.executeUpdate(sql);
-
-			//readData("USERINFO", "ID");
-
-			stmt.close();
-			c.commit();
-			c.close();
-		}
-		catch (Exception e)
-		{
-            e.printStackTrace();
-        }
-	}
-	//	4. Main App Switch-Case Loop
-	public static void main(String[] args) throws SQLException, SQLWarning
-	{
-		try
-		{
+		// try
+		// {
 			initDB.initDatabase();
 
 			int input = 0;
 			Scanner reader = new Scanner(System.in);
 			do{
+				System.out.println("------------------------------------");
 				System.out.println("Enter your Choice Input as a Number");
+				System.out.println("1.Create new entry in table after fetching data from NewYorkTimes API.\n2.Read from Table\t3.Update from Table\t4.Delete from Table\t5.Exit Switch Case & Programme Termination");
+				System.out.println("------------------------------------");
 				input = reader.nextInt();
 				System.out.println(input);
 				
 				switch (input) {
-				case 0:
-				{
-					System.out.println("Display All Tables");
-					displayTables();
-					//break;
-				}
-				break;
+				// case 0:
+				// {
+				// 	System.out.println("Display All Tables");
+				// 	//displayTables();
+				// }
+				// break;
 				case 1:
 				{
-					System.out.println("Create a New Entry in Table. Enter UserId, TableAPI, Rating, Query");
+					System.out.println("Create a New Entry in Table");
 					createData.createDataFunc();
 				}
 				break;
@@ -189,22 +70,11 @@ public class MainApp{
 				break;
 				case 5:
 				{
-					System.out.println("Add New User");
-					String NAME=reader.next();
-					String EMAIL=reader.next();
-					String PASSWORD=reader.next();
-					String ADDRESS=reader.next();
-					addUser(NAME, EMAIL, PASSWORD, ADDRESS);
-					//break;
-				}
-				break;
-				case 6:
-				{
-					System.out.println("Exit Case");
+					System.out.println("Exit Programme");
 				}
 				break;
 				default:
-					System.out.println("Wrong Input");
+					System.out.println("Incorrect Input. Please enter a Number between 0 to 6.");
 				}
 				
 			} while (!(input==6));
@@ -212,30 +82,34 @@ public class MainApp{
 			reader.close();
 			System.out.println("Program Exiting");
 			
-			File f= new File("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db");           //file to be delete  
-			if(f.delete())                      //returns Boolean value  
-			{  
-				System.out.println(f.getName() + " deleted");   //getting and printing the file name  
-			}  
-			else  
-			{  
-				System.out.println("failed");  
-			}  
+		// 	//Deleting Local Database
+		// 	String localDir = System.getProperty("user.dir");
+		// 	System.out.println(localDir);
+		// 	File f= new File(localDir+"\\testDB.db");    
+		// 	if(f.delete())                    
+		// 	{  
+		// 		System.out.println(f.getName() + " deleted");
+		// 	}  
+		// 	else  
+		// 	{  
+		// 		System.out.println("failed");  
+		// 	}  
 			
-			return;
-		}
-		catch(Exception e)
-		{
-			System.out.println("Error:" + e);
-			File f= new File("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db");           //file to be delete  
-			if(f.delete())                      //returns Boolean value  
-			{  
-				System.out.println(f.getName() + "- File Deleted");   //getting and printing the file name  
-			}  
-			else  
-			{  
-				System.out.println("Failed to Delete File");  
-			}  
-		}
+		// 	return;
+		// }
+		// catch(Exception e)
+		// {
+		// 	String localDir = System.getProperty("user.dir");
+		// 	System.out.println(localDir);
+		// 	File f= new File(localDir+"\\testDB.db");
+		// 	if(f.delete())
+		// 	{  
+		// 		System.out.println(f.getName() + "- File Deleted");
+		// 	}  
+		// 	else  
+		// 	{  
+		// 		System.out.println("Failed to Delete File");  
+		// 	}  
+		// }
 }
 }

@@ -103,7 +103,7 @@ public class initDB
 			stmt.executeUpdate(sql);
 			
 			c.commit();
-			MainApp.displayTables();
+			//MainApp.displayTables();
 			
 			stmt.close();
 			c.close();

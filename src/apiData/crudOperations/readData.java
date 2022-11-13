@@ -24,29 +24,46 @@ public class readData {
     public static void readDataFunc()
 	{
 		Scanner reader = new Scanner(System.in);
-        System.out.println("Delete From Table");
+        System.out.println("Read From Table");
+        System.out.println("1.Article\t2.Movie Review\t3.Book Review\t4.UserInfo Table");
         int table=reader.nextInt();
         if(table==1)
         {
-            String query=reader.next();
+            System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            System.out.println("0.All(*)\t1.ARTICLE_ID\t2.HEADLINE\t3.ABSTRACT\t4.URL\t5.DATE\t6.RATING\t7.USER_ID");
+            //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
+            reader.nextLine();
+            String query=reader.nextLine();
             articleTdg TDG = new articleTdg();
             TDG.read(query);
         }
         else if(table==2)
         {
-            String query=reader.next();
+            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
+            System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
+            reader.nextLine();
+            String query=reader.nextLine();
             movieTdg TDG= new movieTdg();
             TDG.read(query);
         }
         else if(table==3)
         {
-            String query=reader.next();
+            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
+            System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
+            reader.nextLine();
+            String query=reader.nextLine();
             bookTdg TDG = new bookTdg();
             TDG.read(query);
         }
         else if(table==4)
         {
-            String query=reader.next();
+            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
+            System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. ADDRESS, EMAIL");
+            reader.nextLine();
+            String query=reader.nextLine();
             userTdg TDG = new userTdg();
             TDG.read(query);
         }
@@ -54,10 +71,8 @@ public class readData {
             System.out.println("Wrong Input");
             table=reader.nextInt();
         }
-        reader.close();
-
-		
-	
+        // reader.close();
+        
 	}
 	
     

@@ -24,45 +24,68 @@ public class createData {
     public static void createDataFunc()
 	{
 		Scanner reader = new Scanner(System.in);
-        System.out.println("Delete From Table");
+        System.out.println("Create From Table");
+        System.out.println("1.Article\t2.Movie Review\t3.Book Review\t4.UserInfo Table");
+        //mm;
         int table=reader.nextInt();
         if(table==1)
         {
+            System.out.println("Enter User Id");
 			int userId=reader.nextInt();
+            System.out.println("Enter Article Query String");
+            reader.nextLine();
+            String query=reader.nextLine();
+            System.out.println("Enter Rating for Article");
 			int rating=reader.nextInt();
-            String query=reader.next();
             articleTdg TDG = new articleTdg();
             TDG.create(userId, rating, query);
         }
         else if(table==2)
         {
-            int userId=reader.nextInt();
+            System.out.println("Enter User Id");
+			int userId=reader.nextInt();
+            System.out.println("Enter Movie Query String");
+            reader.nextLine();
+            String query=reader.nextLine();
+            System.out.println("Enter Rating for Movie");
 			int rating=reader.nextInt();
-            String query=reader.next();
             movieTdg TDG= new movieTdg();
             TDG.create(userId, rating, query);
         }
         else if(table==3)
         {
-            int userId=reader.nextInt();
+            System.out.println("Enter User Id");
+			int userId=reader.nextInt();
+            System.out.println("Enter Book Query String");
+            reader.nextLine();
+            String query=reader.nextLine();
+            System.out.println("Enter Rating for Book");
 			int rating=reader.nextInt();
-            String query=reader.next();
             bookTdg TDG = new bookTdg();
             TDG.create(userId, rating, query);
         }
         else if(table==4)
         {
-            int userId=reader.nextInt();
-			int rating=reader.nextInt();
-            String query=reader.next();
+            System.out.println("Enter User Name without space");
+            reader.nextLine();
+            String NAME=reader.nextLine();
+            System.out.println("Enter User Email");
+            reader.nextLine();
+            String EMAIL=reader.nextLine();
+            System.out.println("Enter User Password");
+            reader.nextLine();
+            String PASSWORD=reader.nextLine();
+            System.out.println("Enter User Address without space");
+            reader.nextLine();
+            String ADDRESS=reader.nextLine();
             userTdg TDG = new userTdg();
-            TDG.create(userId, rating, query);
+            TDG.create(NAME, EMAIL, PASSWORD, ADDRESS);
         }
         else{
             System.out.println("Wrong Input");
             table=reader.nextInt();
         }
-        reader.close();
+        // reader.close();
 	
 	}
     
