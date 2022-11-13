@@ -1,4 +1,6 @@
 package apiData.tdg;
+import apiData.objects.*;
+
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -67,6 +69,10 @@ public class userTdg {
 				PASSWORD + "', '" +
 				ADDRESS +										
 				"');";
+			User user = new User();
+			user.setName(NAME); user.setEmail(EMAIL);
+			user.setPassword(PASSWORD); user.setAddress(ADDRESS);
+
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
 

@@ -1,4 +1,6 @@
 package apiData.tdg;
+import apiData.objects.*;
+
 import apiData.fetchData.*;
 
 // import java.util.Scanner;
