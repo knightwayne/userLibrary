@@ -1,8 +1,9 @@
 package apiData.tdg;
+import apiData.fetchData.*;
 
-import java.util.Scanner;
-import java.net.HttpURLConnection;
-import java.net.URL;
+// import java.util.Scanner;
+// import java.net.HttpURLConnection;
+// import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -13,7 +14,7 @@ import java.sql.ResultSet;
 //External JREs
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+// import org.json.simple.parser.JSONParser;
 
 public class movieTdg {
 
@@ -30,36 +31,14 @@ public class movieTdg {
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 
-			
-            String urlString="https://api.nytimes.com/svc/movies/v2/reviews/search.json?query=" + query+ "&api-key=4sPrzYTdpJ9MHG1S6SG57GYYCZOcBV38";
-            System.out.println("API URL: "+ urlString);
-            URL url = new URL(urlString);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-            int responsecode = conn.getResponseCode();
-            if (responsecode != 200)
+			pairClass recv = new pairClass();
+            recv=fetchMovieAPI.getResponse(query);
+            
+            
+            if (recv.responseCode == 200)
             {
-                throw new RuntimeException("HttpResponseCode: " + responsecode);
-            }
-            else
-            {
-
-                String inline = "";
-                Scanner scanner = new Scanner(url.openStream());
-                while (scanner.hasNext()) {
-                    inline += scanner.nextLine();
-                }
-                scanner.close();
-                // System.out.println("API Fetched Data: "+inline.toString());
-                
-                String parsed = inline.toString();
-                JSONParser parser = new JSONParser();
-                JSONObject data_obj = (JSONObject) parser.parse(parsed);
-                // System.out.println(data_obj.toString());
-                
-                JSONArray movieArr= (JSONArray) data_obj.get("results");
-                System.out.println(data_obj.get("num_results").toString() + "Size of Array for Movies: "+movieArr.size());
+                JSONArray movieArr=recv.mediaArray;
+				System.out.println("Size of Array for Articles: "+movieArr.size());
                 for (int i = 0; i < movieArr.size(); i++)
                 {
                     System.out.println("Loop Iter: " + i);
@@ -90,6 +69,10 @@ public class movieTdg {
                 System.out.println("End of Insert Data into Movies");
 			    //End Movie
 			}
+            else
+            {
+                throw new RuntimeException("HttpResponseCode: " + recv.responseCode);
+            }
             stmt.close();
 			c.commit();
 			c.close();

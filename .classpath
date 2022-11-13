@@ -10,5 +10,7 @@
 	<classpathentry kind="lib" path="C:/Users/arnav/Downloads/json-20220924.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arnav/Downloads/commons-io-2.4.jar"/>
 	<classpathentry kind="lib" path="C:/Users/arnav/Downloads/sqlite-jdbc-3.39.3.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/arnav/Downloads/junit-4.10.jar"/>
+	<classpathentry kind="lib" path="C:/Users/arnav/Downloads/junit-jupiter-api-5.9.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -147,9 +147,8 @@ public class MainApp{
 		try
 		{
 			initDB.initDatabase();
-			//fetchData();
-			
-			int input = 1;
+
+			int input = 0;
 			Scanner reader = new Scanner(System.in);
 			do{
 				System.out.println("Enter your Choice Input as a Number");
@@ -168,49 +167,24 @@ public class MainApp{
 				{
 					System.out.println("Create a New Entry in Table. Enter UserId, TableAPI, Rating, Query");
 					createData.createDataFunc();
-					// int userId=reader.nextInt();
-					// String Table=reader.next();
-					// int rating=reader.nextInt();
-					// String Query=reader.next();
-					// System.out.println(userId+Table+rating+Query);
-					// createData.createDataF(userId, Table, rating, Query);
-					// //break;
 				}
 				break;
 				case 2:
 				{
 					System.out.println("Read From Table");
 					readData.readDataFunc();
-					// String Table=reader.next();
-					// String Query=reader.next();
-					// System.out.println(Table+Query);
-					// readData.readDataF(Table, Query);
-					// //break;
 				}
 				break;
 				case 3:
 				{
 					System.out.println("Update From Table");
 					updateData.updateDataFunc();
-					// String Table=reader.next();
-					// String QueryValue=reader.next();
-					// String LHS=reader.next();
-					// String RHS=reader.next();
-					// //System.out.println(Table+Query);
-					// updateData.updateDataF(Table, QueryValue, LHS, RHS);
-					//break;
 				}
 				break;
 				case 4:
 				{
 					System.out.println("Delete From Table");
 					deleteData.deleteDataFunc();
-					// String Table=reader.next();
-					// String LHS=reader.next();
-					// String RHS=reader.next();
-					// //System.out.println(Table+Query);
-					// deleteData.deleteDataF(Table, LHS, RHS);
-					//break;
 				}
 				break;
 				case 5:
