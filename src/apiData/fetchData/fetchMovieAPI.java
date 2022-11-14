@@ -9,7 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class fetchMovieAPI {
+public class fetchMovieAPI implements FetchInterface{
     
     public static pairClass getResponse(String query)
     {

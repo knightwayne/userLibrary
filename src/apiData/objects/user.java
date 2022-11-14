@@ -2,11 +2,11 @@ package apiData.objects;
 
 public class User {
 
-    public int id;
-    public String userName;
-    public String userEmail;
-    public String userPassword;
-    public String userAddress;
+    private int id;
+    private String userName;
+    private String userEmail;
+    private String userPassword;
+    private String userAddress;
 
     public int getId(){
         return this.id;

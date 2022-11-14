@@ -1,11 +1,11 @@
 package apiData.objects;
 
 public class Media {
-    public int id;
-    public String mediaURL;
-    public String mediaDate;
-    public String mediaRating;
-    public int userId;
+    private int id;
+    private String mediaURL;
+    private String mediaDate;
+    private String mediaRating;
+    private int userId;
 
     public int getId(){
         return this.id;

@@ -11,7 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 
 
-public class fetchBookAPI {
+public class fetchBookAPI implements FetchInterface{
 
     public static pairClass getResponse(String query)
     {

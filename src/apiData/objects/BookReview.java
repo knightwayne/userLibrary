@@ -1,9 +1,9 @@
 package apiData.objects;
 
 public class BookReview extends Media {
-    String bookTitle;
-    String bookCritic; //change to Reviewer
-    String bookSummary;
+    private String bookTitle;
+    private String bookCritic; //change to Reviewer
+    private String bookSummary;
 
     public String getBookTitle(){
         return this.bookTitle;

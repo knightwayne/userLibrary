@@ -9,7 +9,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-public class fetchArticleAPI {
+public class fetchArticleAPI implements FetchInterface{
 
     public static pairClass getResponse(String query)
     {

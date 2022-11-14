@@ -1,9 +1,9 @@
 package apiData.objects;
 
 public class MovieReview extends Media {
-    public String movieTitle;
-    public String movieCritic;
-    public String movieSummary;
+    private String movieTitle;
+    private String movieCritic;
+    private String movieSummary;
 
     public String getMovieTitle(){
         return this.movieTitle;
