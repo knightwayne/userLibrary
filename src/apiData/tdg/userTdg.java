@@ -72,6 +72,8 @@ public class userTdg {
 			User user = new User();
 			user.setName(NAME); user.setEmail(EMAIL);
 			user.setPassword(PASSWORD); user.setAddress(ADDRESS);
+			userTdg u = new userTdg();
+			user.setId(u.returnUserId("ID"));
 
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
@@ -195,4 +197,39 @@ public class userTdg {
         }
     }
     
+	public int returnUserId(String query)
+    {
+        try
+		{
+			Connection c = null;
+			Statement stmt = null;
+			String sql="";
+			//Class.forName("org.sqlite.JDBC");
+			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+			c.setAutoCommit(false);
+			System.out.println("Opened database successfully");
+			stmt = c.createStatement();
+
+			sql="SELECT " + query + " FROM USERINFO;" ;
+			System.out.println("SQL: " + sql + "\n" + query + "\n");
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			int lastKey=0;
+			while ( rs.next() ) {
+				lastKey = rs.getInt("ID");
+				//System.out.println("For Column " + cnt + ": " + "Value " + q);
+			}
+			rs.close();
+
+			stmt.close();
+			c.commit();
+			c.close();
+			return lastKey;
+		}
+		catch (Exception e)
+		{
+            e.printStackTrace();
+			return 0;
+        }
+    }
 }

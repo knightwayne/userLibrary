@@ -30,10 +30,10 @@ public class MainApp{
 			int input = 0;
 			Scanner reader = new Scanner(System.in);
 			do{
-				System.out.println("------------------------------------");
+				System.out.println("------------------------------------------------------------------------------------------------------------");
 				System.out.println("Enter your Choice Input as a Number");
 				System.out.println("1.Create new entry in table after fetching data from NewYorkTimes API.\n2.Read from Table\t3.Update from Table\t4.Delete from Table\t5.Exit Switch Case & Programme Termination");
-				System.out.println("------------------------------------");
+				System.out.println("------------------------------------------------------------------------------------------------------------");
 				input = reader.nextInt();
 				System.out.println(input);
 				
@@ -84,9 +84,24 @@ public class MainApp{
 			System.out.println("Program Exiting");
 			
 			//Deleting Local Database
-			String localDir = System.getProperty("user.dir");
-			System.out.println(localDir);
-			File f= new File(localDir+"\\testDB.db");    
+			// String localDir = System.getProperty("user.dir");
+			// System.out.println(localDir);
+			File curDir = new File(".");
+			File[] filesList = curDir.listFiles();
+        	for(File f : filesList){
+            if(f.isFile()){
+                System.out.println(f.getName());
+				System.out.println(f.getPath());
+            }}
+
+			File f= new File(".\\testDB.db");
+			// System.out.println(localDir+"\\testDB.db");  
+			System.out.println("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db") ;
+			System.out.println(f.getName());
+			System.out.println(f.getPath());
+			System.out.println(f.delete());
+			System.out.println(f.exists());
+			
 			if(f.delete())                    
 			{  
 				System.out.println(f.getName() + " deleted");
@@ -103,6 +118,7 @@ public class MainApp{
 			String localDir = System.getProperty("user.dir");
 			System.out.println(localDir);
 			File f= new File(localDir+"\\testDB.db");
+			System.out.println(localDir+"\\testDB.db");
 			if(f.delete())
 			{  
 				System.out.println(f.getName() + "- File Deleted");
