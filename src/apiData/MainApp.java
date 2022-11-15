@@ -1,19 +1,22 @@
 package apiData;
-import apiData.crudOperations.*;
-//Libraries
-// import java.net.HttpURLConnection;
-// import java.net.URL;
-
+import apiData.tdg.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
-
 // import java.sql.Connection;
 // import java.sql.Statement;
 // import java.sql.DriverManager;
 // import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.SQLWarning;
+import java.util.Scanner;
+
+//Libraries
+// import java.net.HttpURLConnection;
+// import java.net.URL;
+import apiData.crudOperations.createData;
+import apiData.crudOperations.deleteData;
+import apiData.crudOperations.readData;
+import apiData.crudOperations.updateData;
 
 //External JREs
 // import org.json.simple.JSONArray;
@@ -32,18 +35,25 @@ public class MainApp{
 			do{
 				System.out.println("------------------------------------------------------------------------------------------------------------");
 				System.out.println("Enter your Choice Input as a Number");
-				System.out.println("1.Create new entry in table after fetching data from NewYorkTimes API.\n2.Read from Table\t3.Update from Table\t4.Delete from Table\t5.Exit Switch Case & Programme Termination");
+				System.out.println("0.Display All Tables\t1.Create new entry in table after fetching data from NewYorkTimes API.\n2.Read from Table\t3.Update from Table\t4.Delete from Table\t5.Exit Switch Case & Programme Termination");
 				System.out.println("------------------------------------------------------------------------------------------------------------");
 				input = reader.nextInt();
 				System.out.println(input);
 				
 				switch (input) {
-				// case 0:
-				// {
-				// 	System.out.println("Display All Tables");
-				// 	//displayTables();
-				// }
-				// break;
+				case 0:
+				{
+					System.out.println("Display All Tables");
+					articleTdg a1=new articleTdg();
+					a1.read("All");
+					movieTdg a2=new movieTdg();
+					a2.read("All");
+					bookTdg a3=new bookTdg();
+					a3.read("All");
+					userTdg a4=new userTdg();
+					a4.read("All"); 
+				}
+				break;
 				case 1:
 				{
 					System.out.println("Create a New Entry in Table");
@@ -90,43 +100,42 @@ public class MainApp{
 			File[] filesList = curDir.listFiles();
         	for(File f : filesList){
             if(f.isFile()){
-                System.out.println(f.getName());
-				System.out.println(f.getPath());
-            }}
-
-			File f= new File(".\\testDB.db");
-			// System.out.println(localDir+"\\testDB.db");  
-			System.out.println("D:\\CodeRepository\\1 Codebase\\Eclipse\\apiData\\testDB.db") ;
-			System.out.println(f.getName());
-			System.out.println(f.getPath());
-			System.out.println(f.delete());
-			System.out.println(f.exists());
-			
-			if(f.delete())                    
-			{  
-				System.out.println(f.getName() + " deleted");
-			}  
-			else  
-			{  
-				System.out.println("failed");  
-			}  
-			
+				String str=f.getName();
+				if(str.equals("testDB.db"))
+				{
+					if(f.delete())                    
+					{  
+						System.out.println(f.getName() + " deleted");
+					}  
+					else  
+					{  
+						System.out.println("failed");  
+					} 
+				}
+            }
+		}			
 			return;
 		}
 		catch(Exception e)
 		{
-			String localDir = System.getProperty("user.dir");
-			System.out.println(localDir);
-			File f= new File(localDir+"\\testDB.db");
-			System.out.println(localDir+"\\testDB.db");
-			if(f.delete())
-			{  
-				System.out.println(f.getName() + "- File Deleted");
-			}  
-			else  
-			{  
-				System.out.println("Failed to Delete File");  
-			}  
-		}
+			File curDir = new File(".");
+			File[] filesList = curDir.listFiles();
+        	for(File f : filesList){
+				if(f.isFile()){
+					System.out.println(f.getName());
+					if(f.getName().equals("testDB.db"))
+					{
+						if(f.delete())                    
+						{  
+							System.out.println(f.getName() + " deleted");
+						}  
+						else  
+						{  
+							System.out.println("failed");  
+						} 
+					}
+				}
+			}
+		}	
 }
 }

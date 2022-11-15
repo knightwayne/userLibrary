@@ -2,7 +2,7 @@ package apiData.objects;
 
 public class BookReview extends Media {
     private String bookTitle;
-    private String bookCritic; //change to Reviewer
+    private String bookCritic;
     private String bookSummary;
 
     public String getBookTitle(){

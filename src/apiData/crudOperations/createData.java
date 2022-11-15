@@ -1,5 +1,7 @@
 package apiData.crudOperations;
 import apiData.tdg.*;
+import apiData.objects.*;
+
 //Libraries
 // import java.net.HttpURLConnection;
 // import java.net.URL;
@@ -26,7 +28,6 @@ public class createData {
 		Scanner reader = new Scanner(System.in);
         System.out.println("Create From Table");
         System.out.println("1.Article\t2.Movie Review\t3.Book Review\t4.UserInfo Table");
-        //mm;
         int table=reader.nextInt();
         if(table==1)
         {
@@ -69,10 +70,10 @@ public class createData {
             System.out.println("Enter User Name without space");
             reader.nextLine();
             String NAME=reader.nextLine();
-            System.out.println("Enter User Email");
+            System.out.println("Enter User Email as a single string");
             reader.nextLine();
             String EMAIL=reader.nextLine();
-            System.out.println("Enter User Password");
+            System.out.println("Enter User Password as a single string");
             reader.nextLine();
             String PASSWORD=reader.nextLine();
             System.out.println("Enter User Address without space");
@@ -80,6 +81,12 @@ public class createData {
             String ADDRESS=reader.nextLine();
             userTdg TDG = new userTdg();
             TDG.create(NAME, EMAIL, PASSWORD, ADDRESS);
+
+            User user = new User();
+			user.setName(NAME); user.setEmail(EMAIL);
+			user.setPassword(PASSWORD); user.setAddress(ADDRESS);
+			user.setId(TDG.returnUserId("ID"));
+
         }
         else{
             System.out.println("Wrong Input");

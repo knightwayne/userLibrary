@@ -1,5 +1,4 @@
 package apiData.tdg;
-import apiData.objects.*;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -69,11 +68,7 @@ public class userTdg {
 				PASSWORD + "', '" +
 				ADDRESS +										
 				"');";
-			User user = new User();
-			user.setName(NAME); user.setEmail(EMAIL);
-			user.setPassword(PASSWORD); user.setAddress(ADDRESS);
-			userTdg u = new userTdg();
-			user.setId(u.returnUserId("ID"));
+			
 
 			System.out.println("SQL: " + sql);
 			stmt.executeUpdate(sql);
@@ -175,12 +170,12 @@ public class userTdg {
 			sql = "DELETE FROM USERINFO WHERE " + lhs + " = '" + rhs + "';" ;
 			if(lhs.equals("ID"))
 			{
-				articleTdg a1=new articleTdg();
-				a1.delete("USER_ID",rhs);
-				movieTdg a2=new movieTdg();
-				a2.delete("USER_ID",rhs);
-				bookTdg a3=new bookTdg();
-				a3.delete("USER_ID",rhs);
+				articleTdg tdg1=new articleTdg();
+				tdg1.delete("USER_ID",rhs);
+				movieTdg tdg2=new movieTdg();
+				tdg2.delete("USER_ID",rhs);
+				bookTdg tdg3=new bookTdg();
+				tdg3.delete("USER_ID",rhs);
 			}
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;

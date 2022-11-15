@@ -1,18 +1,21 @@
 package apiData;
-import apiData.tdg.*;
-//Libraries
-// import java.net.HttpURLConnection;
-// import java.net.URL;
-
 // import java.io.File;
 // import java.util.Scanner;
 
 import java.sql.Connection;
-import java.sql.Statement;
 import java.sql.DriverManager;
 // import java.sql.ResultSet;
 // import java.sql.SQLException;
 // import java.sql.SQLWarning;
+import java.sql.Statement;
+
+//Libraries
+// import java.net.HttpURLConnection;
+// import java.net.URL;
+import apiData.tdg.articleTdg;
+import apiData.tdg.bookTdg;
+import apiData.tdg.movieTdg;
+import apiData.tdg.userTdg;
 
 // //External JREs
 // import org.json.simple.JSONArray;
@@ -35,7 +38,7 @@ public class initDB
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 			
-			sql = "CREATE TABLE USERINFO " +
+			sql = "CREATE TABLE IF NOT EXISTS USERINFO " +
 				"(ID INTEGER PRIMARY KEY	AUTOINCREMENT," +
 				" NAME	TEXT    NOT NULL, " + 
 				" EMAIL	TEXT     NOT NULL, " + 
@@ -43,7 +46,7 @@ public class initDB
 				" ADDRESS TEXT)"; 
 			stmt.executeUpdate(sql);
 			
-			sql = "CREATE TABLE ARTICLE " +  
+			sql = "CREATE TABLE IF NOT EXISTS ARTICLE " +  
 				"(ARTICLE_ID INTEGER PRIMARY KEY AUTOINCREMENT, "+  
 				"HEADLINE TEXT NOT NULL, "+
 				"ABSTRACT TEXT NOT NULL, "+
@@ -54,7 +57,7 @@ public class initDB
 				"FOREIGN KEY (USER_ID) REFERENCES USERINFO(ID))";
 			stmt.executeUpdate(sql);
 				
-			sql = "CREATE TABLE MOVIEREVIEW " +  
+			sql = "CREATE TABLE IF NOT EXISTS MOVIEREVIEW " +  
 				"(MOVIE_ID INTEGER PRIMARY KEY AUTOINCREMENT, "+  
 				"TITLE TEXT NOT NULL, "+
 				"CRITIC TEXT NOT NULL, "+
@@ -66,7 +69,7 @@ public class initDB
 				"FOREIGN KEY (USER_ID) REFERENCES USERINFO(ID))";
 			stmt.executeUpdate(sql);
 			
-			sql = "CREATE TABLE BOOKREVIEW " +  
+			sql = "CREATE TABLE IF NOT EXISTS BOOKREVIEW " +  
 				"(BOOK_ID INTEGER PRIMARY KEY AUTOINCREMENT, "+  
 				"TITLE TEXT NOT NULL, "+
 				"CRITIC TEXT NOT NULL, "+
