@@ -22,12 +22,12 @@ Project Report on the following Google Drive Link
 
 ### Class Diagram
 ***
-![]https://drive.google.com/uc?id=1gk8Tn_svO4gKS28nEs-EqrliyEWn7VX6)
+![](https://drive.google.com/uc?id=1gk8Tn_svO4gKS28nEs-EqrliyEWn7VX6)
 
 ### Database Schema
 ***
-![]https://drive.google.com/uc?id=1GNnBjOAq7X6nTJ1Wzk-_3ksIBbjAr399)
+![](https://drive.google.com/uc?id=1GNnBjOAq7X6nTJ1Wzk-_3ksIBbjAr399)
 
 ### Horizontal Mapping
 ***
-![]https://drive.google.com/uc?id=1LQMtxAAVhoGry1DvgWvDxViBVJy0Sg42)
+![](https://drive.google.com/uc?id=1LQMtxAAVhoGry1DvgWvDxViBVJy0Sg42)
