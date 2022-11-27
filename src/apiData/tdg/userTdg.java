@@ -166,17 +166,27 @@ public class userTdg {
 			c.setAutoCommit(false);
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
-
-			sql = "DELETE FROM USERINFO WHERE " + lhs + " = '" + rhs + "';" ;
-			if(lhs.equals("ID"))
+			
+			sql="SELECT ID FROM USERINFO WHERE "+ lhs + " = '" + rhs + "';" ;
+			ResultSet rs = stmt.executeQuery(sql);
+			int id=0;
+			while ( rs.next() ) {
+				id = rs.getInt("ID");
+			}
+			rs.close();
+			String idStr = Integer.toString(id);
+			
+			sql = "DELETE FROM USERINFO WHERE " + lhs + " = '" + rhs + "';" ;		
+			if(true)
 			{
 				articleTdg tdg1=new articleTdg();
-				tdg1.delete("USER_ID",rhs);
+				tdg1.delete(idStr,rhs);
 				movieTdg tdg2=new movieTdg();
-				tdg2.delete("USER_ID",rhs);
+				tdg2.delete(idStr,rhs);
 				bookTdg tdg3=new bookTdg();
-				tdg3.delete("USER_ID",rhs);
+				tdg3.delete(idStr,rhs);
 			}
+			
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
 			System.out.println("SQL: " + sql);

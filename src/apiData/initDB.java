@@ -2,6 +2,7 @@ package apiData;
 // import java.io.File;
 // import java.util.Scanner;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
 // import java.sql.ResultSet;
@@ -26,6 +27,30 @@ public class initDB
 {
     public static void initDatabase()
 	{
+    	//Deleting Local Database
+		// String localDir = System.getProperty("user.dir");
+		// System.out.println(localDir);
+    	File curDir = new File(".");
+		File[] filesList = curDir.listFiles();
+    	for(File f : filesList)
+    	{
+    		if(f.isFile())
+    		{
+				String str=f.getName();
+				if(str.equals("testDB.db"))
+				{
+					if(f.delete())                    
+					{  
+						//System.out.println(f.getName() + " deleted");
+					}  
+					else  
+					{  
+						//System.out.println("failed");  
+					} 
+				}
+    		}
+    	}
+    	
 		Connection c;
 	    Statement stmt = null;
 	    String sql="";
@@ -33,6 +58,21 @@ public class initDB
 		try
 		{
 			//Class.forName("org.sqlite.JDBC");
+			//Deleting Old Database to avoid Conflict
+			Connection conn = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+	        Statement stmt1 = conn.createStatement();		      
+	        String sql1; 
+	        sql1 = "DROP TABLE IF EXISTS USERINFO;";
+	        stmt1.executeUpdate(sql1);
+	        sql1 = "DROP TABLE IF EXISTS ARTICLE;";
+	        stmt1.executeUpdate(sql1);
+	        sql1 = "DROP TABLE IF EXISTS MOVIEREVIEW;";
+	        stmt1.executeUpdate(sql1);
+	        sql1 = "DROP TABLE IF EXISTS BOOKREVIEW;";
+	        stmt1.executeUpdate(sql1);
+	        System.out.println("Previous Database dropped successfully..."); 
+			
+	         //creating new Database
 			c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
 			c.setAutoCommit(false);
 			System.out.println("Opened database successfully");

@@ -57,7 +57,7 @@ public class createData {
         {
             System.out.println("Enter User Id");
 			int userId=reader.nextInt();
-            System.out.println("Enter Book Query String");
+            System.out.println("Enter Book Query String. Query String must be complete book name, Eg. For the Book The fault in our stars, fault in our stars or any other query string is invalid.");
             reader.nextLine();
             String query=reader.nextLine();
             System.out.println("Enter Rating for Book");
@@ -71,13 +71,13 @@ public class createData {
             reader.nextLine();
             String NAME=reader.nextLine();
             System.out.println("Enter User Email as a single string");
-            reader.nextLine();
+            //reader.nextLine();
             String EMAIL=reader.nextLine();
             System.out.println("Enter User Password as a single string");
-            reader.nextLine();
+            //reader.nextLine();
             String PASSWORD=reader.nextLine();
             System.out.println("Enter User Address without space");
-            reader.nextLine();
+            //reader.nextLine();
             String ADDRESS=reader.nextLine();
             userTdg TDG = new userTdg();
             TDG.create(NAME, EMAIL, PASSWORD, ADDRESS);

@@ -29,6 +29,7 @@ public class readData {
         int table=reader.nextInt();
         if(table==1)
         {
+        	System.out.println("Enter the attribute whose value will be read. Enter All for the whole table");
             System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
             System.out.println("0.All(*)\t1.ARTICLE_ID\t2.HEADLINE\t3.ABSTRACT\t4.URL\t5.DATE\t6.RATING\t7.USER_ID");
             //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
@@ -39,8 +40,9 @@ public class readData {
         }
         else if(table==2)
         {
-            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
+            System.out.println("Enter the attribute whose value will be read. Enter All for the whole table");
             System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            System.out.println("0.All\t1.MOVIE_ID\t2.TITLE\t3.CRITIC\t4.SUMMARY\t5.URL\t6.DATE\t7.RATING\t8.USER_ID");
             //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
             reader.nextLine();
             String query=reader.nextLine();
@@ -49,8 +51,9 @@ public class readData {
         }
         else if(table==3)
         {
-            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
+            System.out.println("Enter the attribute whose value will be read. Enter All for the whole table");
             System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            System.out.println("0.All\t1.BOOK_ID\t2.TITLE\t3.CRITIC\t4.SUMMARY\t5.URL\t6.DATE\t7.RATING\t8.USER_ID");
             //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. Date, Rating");
             reader.nextLine();
             String query=reader.nextLine();
@@ -59,8 +62,9 @@ public class readData {
         }
         else if(table==4)
         {
-            System.out.println("Enter the attribute whose value will be read. Enter all for the whole table");
-            System.out.println("Enter the attribute name, Eg. DATE, RATING whose value will be read. Enter All for the whole table");
+            System.out.println("Enter the attribute whose value will be read. Enter All for the whole table");
+            System.out.println("Enter the attribute name, Eg. EMAIL, NAME whose value will be read. Enter All for the whole table");
+            System.out.println("0.All\t1.ID\t2.NAME\t3.EMAIL\t4.PASSWORD\t5.ADDRESS");
             //System.out.println("Enter multiple attribute names as Comma Separated Value, Eg. ADDRESS, EMAIL");
             reader.nextLine();
             String query=reader.nextLine();

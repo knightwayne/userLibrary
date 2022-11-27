@@ -134,7 +134,7 @@ public class bookTdg implements mediaInterface{
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 
-			sql="SELECT " + query + " FROM BOOK;" ;
+			sql="SELECT " + query + " FROM BOOKREVIEW;" ;
 			System.out.println("SQL: " + sql + "\n" + query + "\n");
 			if(query.equals("All"))
 			{
@@ -175,7 +175,7 @@ public class bookTdg implements mediaInterface{
 			System.out.println("Opened database successfully");
 			stmt = c.createStatement();
 
-			sql = "UPDATE BOOK SET RATING = " + queryValue + " WHERE " + lhs + " = " + rhs + ";" ;
+			sql = "UPDATE BOOKREVIEW SET RATING = " + queryValue + " WHERE " + lhs + " = " + rhs + ";" ;
 			// UPDATE BOOKREVIEW set RATING = 88 where Date=ww2;
 			// UPDATE COMPANY set SALARY = 25000.00 where ID=1;
 			System.out.println("SQL: " + sql);

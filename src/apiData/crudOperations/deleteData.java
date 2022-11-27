@@ -29,8 +29,9 @@ public class deleteData {
         int table=reader.nextInt();
         if(table==1)
         {
-            System.out.println("Delete condition requires 2 values, a column name & a data value, and it updates rating for values, whose data value matches the specific column attribute");
+            System.out.println("Delete condition requires 2 values, a column name & a data value, and it deletes rows, whose data value matches the specific column attribute");
             System.out.println("Enter the column name/attribute(lhs of condition: where lhs=rhs)");
+            System.out.println("1.ARTICLE_ID\t2.HEADLINE\t3.ABSTRACT\t4.URL\t5.DATE\t6.RATING\t7.USER_ID");
             String lhs=reader.next();
             System.out.println("Enter the Data Value(rhs of condition: where lhs=rhs)");
             String rhs=reader.next();
@@ -39,8 +40,9 @@ public class deleteData {
         }
         else if(table==2)
         {
-            System.out.println("Delete condition requires 2 values, a column name & a data value, and it updates rating for values, whose data value matches the specific column attribute");
+            System.out.println("Delete condition requires 2 values, a column name & a data value, and it deletes rows, whose data value matches the specific column attribute");
             System.out.println("Enter the column name/attribute(lhs of condition: where lhs=rhs)");
+            System.out.println("1.MOVIE_ID\t2.TITLE\t3.CRITIC\t4.SUMMARY\t5.URL\t6.DATE\t7.RATING\t8.USER_ID");
             String lhs=reader.next();
             System.out.println("Enter the Data Value(rhs of condition: where lhs=rhs)");
             String rhs=reader.next();
@@ -49,8 +51,9 @@ public class deleteData {
         }
         else if(table==3)
         {
-            System.out.println("Delete condition requires 2 values, a column name & a data value, and it updates rating for values, whose data value matches the specific column attribute");
+            System.out.println("Delete condition requires 2 values, a column name & a data value, and it deletes rows, whose data value matches the specific column attribute");
             System.out.println("Enter the column name/attribute(lhs of condition: where lhs=rhs)");
+            System.out.println("1.BOOK_ID\t2.TITLE\t3.CRITIC\t4.SUMMARY\t5.URL\t6.DATE\t7.RATING\t8.USER_ID");
             String lhs=reader.next();
             System.out.println("Enter the Data Value(rhs of condition: where lhs=rhs)");
             String rhs=reader.next();
@@ -59,8 +62,9 @@ public class deleteData {
         }
         else if(table==4)
         {
-            System.out.println("Delete condition requires 2 values, a column name & a data value, and it updates rating for values, whose data value matches the specific column attribute");
+            System.out.println("Delete condition requires 2 values, a column name & a data value, and it deletes rows, whose data value matches the specific column attribute");
             System.out.println("Enter the column name/attribute(lhs of condition: where lhs=rhs)");
+            System.out.println("1.ID\t2.NAME\t3.EMAIL\t4.PASSWORD\t5.ADDRESS");
             String lhs=reader.next();
             System.out.println("Enter the Data Value(rhs of condition: where lhs=rhs)");
             String rhs=reader.next();

@@ -2,7 +2,8 @@ package apiData;
 import apiData.tdg.*;
 import java.io.File;
 import java.io.IOException;
-// import java.sql.Connection;
+import java.sql.DriverManager;
+ import java.sql.Connection;
 // import java.sql.Statement;
 // import java.sql.DriverManager;
 // import java.sql.ResultSet;
@@ -29,7 +30,8 @@ public class MainApp{
 		try
 		{
 			initDB.initDatabase();
-
+			System.out.println("Database Initialized with Some Default Values");
+			
 			int input = 0;
 			Scanner reader = new Scanner(System.in);
 			do{
@@ -91,31 +93,10 @@ public class MainApp{
 			} while (!(input==5));
 			
 			reader.close();
-			System.out.println("Program Exiting");
-			
-			//Deleting Local Database
-			// String localDir = System.getProperty("user.dir");
-			// System.out.println(localDir);
-			File curDir = new File(".");
-			File[] filesList = curDir.listFiles();
-        	for(File f : filesList){
-            if(f.isFile()){
-				String str=f.getName();
-				if(str.equals("testDB.db"))
-				{
-					if(f.delete())                    
-					{  
-						System.out.println(f.getName() + " deleted");
-					}  
-					else  
-					{  
-						System.out.println("failed");  
-					} 
-				}
-            }
-		}			
+			System.out.println("Program Exiting");			
 			return;
 		}
+		
 		catch(Exception e)
 		{
 			File curDir = new File(".");
@@ -125,6 +106,9 @@ public class MainApp{
 					System.out.println(f.getName());
 					if(f.getName().equals("testDB.db"))
 					{
+						Connection c = DriverManager.getConnection("jdbc:sqlite:testDB.db");
+						c.close();
+						
 						if(f.delete())                    
 						{  
 							System.out.println(f.getName() + " deleted");
