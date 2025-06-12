@@ -1,4 +1,3 @@
-
 # SOEN 6441 APP Project
 ***
 ---
@@ -9,17 +8,18 @@ Supports basic CRUD Operations, follows Object-relational structural patterns & 
 
 ## Project Made by - 
 ***
-Arnav Ishaan (40216397)
+Arnav Ishaan 
+<!-- (40216397) -->
 
-Reva Balasundaram (40227644)
+<!-- Reva Balasundaram (40227644) -->
 
-## Video Presentation Link
+<!-- ## Video Presentation Link
 ***
 [Video Presentation Link](https://drive.google.com/file/d/1I9ZMxCBqukmEqt9_vFB1tJ4nyhrtH8Ql/view?usp=share_link)
 ## Report
 ***
 Project Report on the following Google Drive Link
-[Report Link](https://drive.google.com/file/d/11dd7SN27FuwPCabQGwHRRfKPSzEmY3vS/view?usp=share_link)
+[Report Link](https://drive.google.com/file/d/11dd7SN27FuwPCabQGwHRRfKPSzEmY3vS/view?usp=share_link) -->
 
 ### Class Diagram
 ***
