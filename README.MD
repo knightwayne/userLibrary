@@ -1,4 +1,5 @@
-# SOEN 6441 APP Project
+# SOEN 6441:  Advanced Programming Practices Project
+[![Java Project CI](https://github.com/knightwayne/userLibrary/actions/workflows/main.yml/badge.svg)](https://github.com/knightwayne/userLibrary/actions/workflows/main.yml)
 ***
 ---
 ## User Library
